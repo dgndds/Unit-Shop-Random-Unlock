@@ -377,7 +377,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -676,7 +676,7 @@ PrefabInstance:
     - target: {fileID: 1835831628171957971, guid: ceb96ee6a27bc4ebdbedf5ef4c0f40b3,
         type: 3}
       propertyPath: m_MatchWidthOrHeight
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1835831628171957971, guid: ceb96ee6a27bc4ebdbedf5ef4c0f40b3,
         type: 3}
@@ -686,17 +686,17 @@ PrefabInstance:
     - target: {fileID: 1835831628171957971, guid: ceb96ee6a27bc4ebdbedf5ef4c0f40b3,
         type: 3}
       propertyPath: m_ReferencePixelsPerUnit
-      value: 150
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1835831628171957971, guid: ceb96ee6a27bc4ebdbedf5ef4c0f40b3,
         type: 3}
       propertyPath: m_ReferenceResolution.x
-      value: 1440
+      value: 1920
       objectReference: {fileID: 0}
     - target: {fileID: 1835831628171957971, guid: ceb96ee6a27bc4ebdbedf5ef4c0f40b3,
         type: 3}
       propertyPath: m_ReferenceResolution.y
-      value: 2560
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 1835831628171957973, guid: ceb96ee6a27bc4ebdbedf5ef4c0f40b3,
         type: 3}
@@ -758,5 +758,11 @@ PrefabInstance:
       propertyPath: m_Transition
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3136313028611875185, guid: ceb96ee6a27bc4ebdbedf5ef4c0f40b3,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 157884ac65db3794fa02df849b220471,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceb96ee6a27bc4ebdbedf5ef4c0f40b3, type: 3}
