@@ -30,9 +30,6 @@ public class ShopManager : MonoBehaviour
     //List of locked skins
     [SerializeField] List<ShopSkin> lockedShopItems;
 
-    //Array of UI  panels
-   // [SerializeField] Transform[] ShopItemsPanel;
-
     //Number of rolls before opening the random skin
     [SerializeField] int randomRollCount;
 
@@ -62,9 +59,7 @@ public class ShopManager : MonoBehaviour
             ShopItems[i].panel.GetComponent<Button>().onClick.AddListener(() => onSkinSelect(currenIndex));
         }
 
-        //ShopItems[selectedId].panel.GetComponent<Image>().color = greenColor;
-
-        // Update list of locked skins by checking all skins
+        // Init list of locked skins by checking all skins
         InitShop();
 
         //Buttons are interactable if they are unlocked
@@ -74,24 +69,27 @@ public class ShopManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Set color of selected panel to green
         ShopItems[selectedId].panel.GetComponent<Image>().color = greenColor;
     }
 
     public void Unlock() {
-            StartCoroutine(ChoseRandomUnlocked());
+        StartCoroutine(ChoseRandomUnlocked());
     }
 
     
     private IEnumerator ChoseRandomUnlocked() {
+
+        // Disable unlock button while random selection
         unlockBtn.interactable = false;
+
+        //Random index where green canvas will land on each roll
         int randomIndex = -1;
 
         for (int i = 0; i < randomRollCount; i++){
 
-            //Random Index
+            //Random Index chosen among locked skins
             randomIndex = UnityEngine.Random.Range(0, lockedShopItems.Count);
-
-            Debug.Log("unlocking " + randomIndex.ToString() + " ...");
 
             //Update random index color to green
             lockedShopItems[randomIndex].panel.GetComponent<Image>().color = greenColor;
@@ -106,9 +104,10 @@ public class ShopManager : MonoBehaviour
         //Record last random index 
         int unlockedIndex = randomIndex;
 
-        // Higlight it with green
-        //lockedShopItems[unlockedIndex].panel.GetComponent<Image>().color = greenColor;
+        // Higlight old selected panel back to grey
         ShopItems[selectedId].panel.GetComponent<Image>().color = greyColor;
+
+        //Pass the id of the selected panel
         selectedId = lockedShopItems[unlockedIndex].skinId;
 
         onSkinSelect(selectedId);
@@ -122,19 +121,17 @@ public class ShopManager : MonoBehaviour
         //Remove unlocked item from locked list
         lockedShopItems.RemoveAt(unlockedIndex);
 
-
-        //ShopItems[unlockedIndex].unlocked = true;
-
-        //UpdateLocked();
-
         //Update unlocked buttons according change of shopskins
         UpdateButtons();
 
-        //onSkinChange?.Invoke(this, new onSkinChangeEventArgs { chosenPanel = ShopItems[selectedId].panel, chosenSkin = ShopItems[selectedId].skinImage });
-
+        //Enable the unlock button since done unlocking skin
         unlockBtn.interactable = true;
     }
 
+    /* 
+     * This method adds locked skins to locked list while shows unlocked skins
+     * Can be used to load data (like in case of save manager)
+     */
     private void InitShop(){
         for (int i = 0; i < ShopItems.Count; i++)
         {
@@ -147,6 +144,10 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    /*
+     * This method enable/disables panel buttons according to unlock status of all shop items
+     * By this user can only select unlocked skins
+     */
     private void UpdateButtons(){
         for (int i = 0; i < ShopItems.Count; i++)
         {
@@ -154,9 +155,16 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+     /*
+     * This method is called when user selects a unlocked skin
+     * index parameter is the index of the selected button (0-8)
+     * Also invokes a skin change event which other scripts can subscribe to
+     * Passes selected image and panel as event arguments
+     * Subscribed scripts can use event args to change ingame skin
+     * Event args can be expanded as need arises
+     */
     private void onSkinSelect(int index)
     {
-        Debug.Log("Chosen skin index:" + index);
         ShopItems[selectedId].panel.GetComponent<Image>().color = greyColor;
         selectedId = index;
 

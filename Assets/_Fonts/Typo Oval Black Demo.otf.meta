@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: ac71c8063905e5e46b57087c9890b54e
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Typo Oval Black Demo
+  fontNames:
+  - Typo Oval Black Demo
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 56b5fbd66549e3e46b4f8bdef2cf5ca9, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
